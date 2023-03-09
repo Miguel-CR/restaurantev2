@@ -116,6 +116,11 @@ export class ProductoCreateComponent implements OnInit {
     this.onReset();
     this.router.navigate(['producto/']);
   }
+  // onFileSelect($event:Event) {
+  //   const file = ($event.target as HTMLInputElement).files[0];
+  // }
+
+  // cover
 
   public errorHandling = (control: string, error: string) => {
     return (

@@ -37,7 +37,7 @@ export class ProductoUpdateComponent implements OnInit {
     precio: new FormControl(''),
     descuento: new FormControl(''),
     categoriaId: new FormControl(''),
-    imagen: new FormControl(''),
+    // imagen: new FormControl(''),
   });
   categoriasList: Categoria[] = [];
   List: any[] = [];
@@ -94,7 +94,8 @@ export class ProductoUpdateComponent implements OnInit {
   updateResponse(p: Producto) {
     this.productosService.updateProducto(p).subscribe({
       next: (response) => {
-        console.log(response);
+        console.log(response + 'xd');
+        this.onBack();
       },
     });
   }
@@ -119,7 +120,6 @@ export class ProductoUpdateComponent implements OnInit {
   onSubmit(): void {
     console.log(JSON.stringify(this.form.value, null, 2));
     this.List.push(this.form.value);
-
     this.List.forEach((element) => {
       this.producto.nombre = element.nombre;
       this.producto.detalle = element.detalle;
@@ -127,13 +127,12 @@ export class ProductoUpdateComponent implements OnInit {
       this.producto.descuento = element.descuento;
       this.producto.categoriaId = element.categoriaId;
     });
-    this.makeSubmit = true;
-
     if (this.form.invalid) {
       return;
     }
+    this.makeSubmit = true;
+
     this.updateResponse(this.producto);
-    this.onBack();
   }
 
   onReset(): void {

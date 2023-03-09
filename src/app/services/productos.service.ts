@@ -13,11 +13,11 @@ export class ProductosService {
   getAllProductos(): Observable<Producto[]> {
     return this.http.get<Producto[]>(this.baseApiUrl + 'api/Pruducto');
   }
-// api/Pruducto/1
+  // api/Pruducto/1
   getProductoById(id: number): Observable<Producto> {
-    console.log(this.baseApiUrl + 'api/Pruducto/' + id.toString());
-
-    return this.http.get<Producto>( this.baseApiUrl + 'api/Pruducto/' + id.toString());
+    return this.http.get<Producto>(
+      this.baseApiUrl + 'api/Pruducto/' + id.toString()
+    );
   }
 
   createProducto(addProducto: Producto): Observable<Producto> {
@@ -33,6 +33,12 @@ export class ProductosService {
     return this.http.put<Producto>(
       this.baseApiUrl + 'api/Pruducto/update',
       uProducto
+    );
+  }
+
+  deleteProducto(id: number): Observable<Producto> {
+    return this.http.delete<Producto>(
+      this.baseApiUrl + 'api/Pruducto/delete/' + id.toString()
     );
   }
 }

@@ -7,26 +7,8 @@ import { ProductosService } from '../../services/productos.service';
   styleUrls: ['./producto-index.component.css'],
 })
 export class ProductoIndexComponent implements OnInit {
-  // {
-  //   Id: 3,
-  //   Nombre: 'XDXDXD',
-  //   Detalle: 'xdxdxd',
-  //   Precio: 2500,
-  //   Descuento: false,
-  //   Id_Categoria: 1,
-  //   Imagen: 'qqqqqq',
-  // },
-  // {
-  //   Id: 4,
-  //   Nombre: 'XDXDXDaA',
-  //   Detalle: 'xdxdxdaA',
-  //   Precio: 2500,
-  //   Descuento: false,
-  //   Id_Categoria: 1,
-  //   Imagen: 'qqqqqq',
-  // },
-
   productos: Producto[] = [];
+  childmessage = true;
   constructor(private productosService: ProductosService) {}
 
   getProductos() {
@@ -40,5 +22,15 @@ export class ProductoIndexComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { this.getProductos();}
+  deleteP(id: number) {
+    this.productosService.deleteProducto(id).subscribe({
+      next: () => {
+        this.getProductos();
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    this.getProductos();
+  }
 }

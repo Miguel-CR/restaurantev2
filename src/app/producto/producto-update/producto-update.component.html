@@ -4,7 +4,7 @@
 <button type="button" id="rg" class="float-left m-5" (click)="onBack()">
   <i class="fas fa-arrow-circle-left"></i> Regresar
 </button>
-<form [formGroup]="form" novalidate>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
 
   <div class="form">
     <div>
